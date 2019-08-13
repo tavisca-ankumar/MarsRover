@@ -5,7 +5,10 @@ pipeline {
             steps {
                 sh script: '''
                     echo "I am in build step"
-                    gradlew.bat build
+                    pwd
+                    ls
+                    chmod 777 ./gradlew
+                    ./gradlew build
                 ''',
             label: "Building Project"
             }
