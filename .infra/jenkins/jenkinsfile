@@ -7,8 +7,7 @@ pipeline {
                     echo "I am in build step"
                     pwd
                     ls
-                    gradle build
-                    gradlew build
+                    ./gradlew build
                 ''',
             label: "Building Project"
             }
