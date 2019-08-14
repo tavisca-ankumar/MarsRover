@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tavisca.workshops.Marsrover.VectorTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2019-08-13T17:43:36" hostname="RENTLAPT0086" time="0.06">
+<testsuite name="com.tavisca.workshops.Marsrover.VectorTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2019-08-14T05:08:50" hostname="RENTLAPT0086" time="0.079">
   <properties/>
-  <testcase name="vectorCanRotateRightFromEast()" classname="com.tavisca.workshops.Marsrover.VectorTest" time="0.029"/>
+  <testcase name="vectorCanRotateRightFromEast()" classname="com.tavisca.workshops.Marsrover.VectorTest" time="0.043"/>
   <testcase name="vectorCanRotateRightFromWest()" classname="com.tavisca.workshops.Marsrover.VectorTest" time="0.001"/>
-  <testcase name="vectorInitializesWithGivenDetails()" classname="com.tavisca.workshops.Marsrover.VectorTest" time="0.002"/>
+  <testcase name="vectorInitializesWithGivenDetails()" classname="com.tavisca.workshops.Marsrover.VectorTest" time="0.001"/>
   <testcase name="vectorCanRotateLeftFromEast()" classname="com.tavisca.workshops.Marsrover.VectorTest" time="0.001"/>
   <testcase name="vectorCanRotateLeftFromWest()" classname="com.tavisca.workshops.Marsrover.VectorTest" time="0.001"/>
-  <testcase name="vectorCanRotateRightFromNorth()" classname="com.tavisca.workshops.Marsrover.VectorTest" time="0.001"/>
+  <testcase name="vectorCanRotateRightFromNorth()" classname="com.tavisca.workshops.Marsrover.VectorTest" time="0.004"/>
   <testcase name="vectorCanRotateRightFromSouth()" classname="com.tavisca.workshops.Marsrover.VectorTest" time="0.001"/>
-  <testcase name="vectorCanRotateLeftFromNorth()" classname="com.tavisca.workshops.Marsrover.VectorTest" time="0.002"/>
-  <testcase name="vectorCanRotateLeftFromSouth()" classname="com.tavisca.workshops.Marsrover.VectorTest" time="0.001"/>
-  <testcase name="vectorShiftUpwardsWhenFacingNorth()" classname="com.tavisca.workshops.Marsrover.VectorTest" time="0.01"/>
+  <testcase name="vectorCanRotateLeftFromNorth()" classname="com.tavisca.workshops.Marsrover.VectorTest" time="0.003"/>
+  <testcase name="vectorCanRotateLeftFromSouth()" classname="com.tavisca.workshops.Marsrover.VectorTest" time="0.003"/>
+  <testcase name="vectorShiftUpwardsWhenFacingNorth()" classname="com.tavisca.workshops.Marsrover.VectorTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

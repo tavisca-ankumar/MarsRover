@@ -5,9 +5,6 @@ pipeline {
             steps {
                 sh script: '''
                     echo "I am in build step"
-                    pwd
-                    ls
-                    chmod 777 ./gradlew
                     ./gradlew build
                 ''',
             label: "Building Project"
