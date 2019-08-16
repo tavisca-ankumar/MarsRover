@@ -5,10 +5,7 @@ pipeline {
             steps {
                 sh script: staut
                     echo "I am in build step"
-<<<<<<< HEAD
-=======
                     chmod 777 ./gradlew
->>>>>>> 9d98284e081ffd69806c77c641904cd3a73295ab
                     ./gradlew build
                 ''',
             label: "Building Project"
