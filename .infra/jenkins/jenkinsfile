@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh script: '''
+                sh script: staut
                     echo "I am in build step"
 <<<<<<< HEAD
 =======
@@ -39,6 +39,8 @@ pipeline {
             steps {
                 sh script: '''
                     echo "I am Building DockerImage ="
+                    docker build . -t "my-new-rover"
+                    docker run my-new-rover
                 ''',
             label: "Building Docker Image"
             }
@@ -48,6 +50,8 @@ pipeline {
             steps {
                 sh script: '''
                     echo "I am Pubishing DockerImage ="
+                    docker tag my-new-rover:latest anoop2677/my-rover:latest
+                    docker push anoop2677/my-rover:latest
                 ''',
             label: "Publishing Docker Image"
             }
