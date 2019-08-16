@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh script: staut
+                sh script: '''
                     echo "I am in build step"
                     chmod 777 ./gradlew
                     ./gradlew build
