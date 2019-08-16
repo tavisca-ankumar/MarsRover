@@ -69,4 +69,22 @@ public class VectorTest {
         Vector r = new Vector(10, 10, 'N');
         assertArrayEquals(new int[]{10,11}, r.move());
     }
+
+    @Test
+    void vectorShiftDownwardsWhenFacingSouth(){
+        Vector r = new Vector(10, 10, 'S');
+        assertArrayEquals(new int[]{10,9}, r.move());
+    }
+
+    @Test
+    void vectorShiftRightwardsWhenFacingEast(){
+        Vector r = new Vector(10, 10, 'E');
+        assertArrayEquals(new int[]{11,10}, r.move());
+    }
+
+    @Test
+    void vectorShiftLeftwardsWhenFacingWest(){
+        Vector r = new Vector(10, 10, 'W');
+        assertArrayEquals(new int[]{9,10}, r.move());
+    }
 }
