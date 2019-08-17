@@ -30,6 +30,7 @@ pipeline {
         {
             steps {
             powershell '''
+                docker logout
                 docker tag my-new-rover anoop2677/my-rover:latest
                 docker push anoop2677/my-rover:latest
                 '''
