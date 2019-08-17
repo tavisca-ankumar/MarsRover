@@ -35,7 +35,6 @@ pipeline {
                 docker login -u=%DOCKER_USERNAME% -p=%DOCKER_PASSWORD%
                 docker tag my-new-rover anoop2677/my-rover:latest
                 docker push anoop2677/my-rover:latest
-                docker logout
                 ''',
                 label: "Publishing Docker Image"
             }
@@ -43,6 +42,9 @@ pipeline {
     }
     post{
         always{
+            bat script:'''
+            docker logout
+            ''',
             deleteDir()
         }
     }
