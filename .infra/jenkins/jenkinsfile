@@ -5,7 +5,7 @@ pipeline {
             steps {
                 sh script: '''
                     echo "I am in build step"
-                    gradlew build
+                    gradlew.bat build
                 ''',
             label: "Building Project"
             }
@@ -15,7 +15,7 @@ pipeline {
             steps {
                 sh script: '''
                     echo "I am in Test step"
-                    gradlew test
+                    gradlew.bat test
                 ''',
             label: "Running Unit Test Cases"
             }
