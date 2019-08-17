@@ -9,42 +9,25 @@ pipeline {
         stage('Test')
         {
             steps {
-                sh script: '''
-                    echo "I am in Test step"
-                    gradlew.bat test
-                ''',
-            label: "Running Unit Test Cases"
+                gradlew.bat test
             }
         }
         stage('Static Code Analysis')
         {
-            steps {
-                sh script: '''
-                    echo "I am in Sonarqube scan"
-                ''',
-            label: "Running Sonarqube Scan"
-            }
+           
         }
         stage('Build DockerImage')
         {
             steps {
-                sh script: '''
-                    echo "I am Building DockerImage ="
-                    docker build . -t "my-new-rover"
-                    docker run my-new-rover
-                ''',
-            label: "Building Docker Image"
+                docker build . -t "my-new-rover"
+                docker run my-new-rover
             }
         }
         stage('Publish DockerImage')
         {
             steps {
-                sh script: '''
-                    echo "I am Pubishing DockerImage ="
-                    docker tag my-new-rover:latest anoop2677/my-rover:latest
-                    docker push anoop2677/my-rover:latest
-                ''',
-            label: "Publishing Docker Image"
+                docker tag my-new-rover:latest anoop2677/my-rover:latest
+                docker push anoop2677/my-rover:latest
             }
         }
     }
