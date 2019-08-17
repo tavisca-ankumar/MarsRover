@@ -9,14 +9,8 @@ pipeline {
         stage('Test')
         {
             steps {
-                bat gradlew.bat test
+                bat 'gradlew.bat test'
             }
-        }
-        stage('Static Code Analysis')
-        {
-           steps {
-           
-           }
         }
         stage('Build DockerImage')
         {
