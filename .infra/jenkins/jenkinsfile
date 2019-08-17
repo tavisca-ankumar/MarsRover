@@ -3,11 +3,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh script: '''
-                    echo "I am in build step"
-                    gradlew.bat build
-                ''',
-            label: "Building Project"
+                if (isUnix()) {
+                    sh './gradlew clean build'
+                 } else {
+                    bat 'gradlew.bat clean build'
+                 }
             }
         }
         stage('Test')
