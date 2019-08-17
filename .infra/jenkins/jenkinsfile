@@ -9,7 +9,7 @@ pipeline {
         stage('Test')
         {
             steps {
-                gradlew.bat test
+                bat gradlew.bat test
             }
         }
         stage('Static Code Analysis')
