@@ -26,7 +26,7 @@ pipeline {
             steps {
             powershell '''
                 docker login -u 'anoop2677' -p '0@noopkum@r'
-                docker tag my-new-rover:latest anoop2677/my-rover:latest
+                docker tag my-new-rover anoop2677/my-rover:latest
                 docker push anoop2677/my-rover:latest
                 '''
             }
