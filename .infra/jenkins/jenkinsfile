@@ -19,15 +19,19 @@ pipeline {
         stage('Build DockerImage')
         {
             steps {
+            powershell '''
                 docker build . -t "my-new-rover"
                 docker run my-new-rover
+                '''
             }
         }
         stage('Publish DockerImage')
         {
             steps {
+            powershell '''
                 docker tag my-new-rover:latest anoop2677/my-rover:latest
                 docker push anoop2677/my-rover:latest
+                '''
             }
         }
     }
