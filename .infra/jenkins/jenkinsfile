@@ -2,38 +2,42 @@ pipeline {
     agent any
     parameters{
         string(name: 'DOCKER_USERNAME', description: "Enter username")
-        password(name: 'DOCKER_PASSWORD', description: "Enter password")
+        string(name: 'DOCKER_PASSWORD', description: "Enter password")
     }
      stages {
         stage('Build') {
             steps {
-               bat 'gradlew.bat clean build'
+               bat 'gradlew.bat clean build',
+               label: "Building Project"
             }
         }
         stage('Test')
         {
             steps {
-                bat 'gradlew.bat test'
+                bat 'gradlew.bat test',
+                label: "Testing Project"
             }
         }
         stage('Build DockerImage')
         {
             steps {
-            powershell '''
+            bat script: '''
                 docker build . -t "my-new-rover"
                 docker run my-new-rover
-                '''
+                ''',
+                label: "Building Docker Image"
             }
         }
         stage('Publish DockerImage')
         {
             steps {
-            powershell '''
+            bat script: '''
                 docker login -u=%DOCKER_USERNAME% -p=%DOCKER_PASSWORD%
                 docker tag my-new-rover anoop2677/my-rover:latest
                 docker push anoop2677/my-rover:latest
                 docker logout
-                '''
+                ''',
+                label: "Publishing Docker Image"
             }
         }
     }
