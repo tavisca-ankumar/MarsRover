@@ -2,7 +2,7 @@ pipeline {
     agent any
     parameters{
         string(name: 'DOCKER_USERNAME', description: "Enter username")
-        string(name: 'DOCKER_PASSWORD', description: "Enter password")
+        password(name: 'DOCKER_PASSWORD', description: "Enter password")
     }
      stages {
         stage('Build') {
