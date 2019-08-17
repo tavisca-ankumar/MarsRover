@@ -31,11 +31,12 @@ pipeline {
         stage('Publish DockerImage')
         {
             steps {
-            powershell '''
+            bat script: '''
                 docker login -u=%DOCKER_USERNAME% -p=%DOCKER_PASSWORD%
                 docker tag my-new-rover anoop2677/my-rover:latest
                 docker push anoop2677/my-rover:latest
-                '''
+                ''',
+                label: "Publishing Docker Image"
             }
         }
     }
