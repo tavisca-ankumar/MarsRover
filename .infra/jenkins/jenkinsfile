@@ -19,6 +19,15 @@ pipeline {
                 label: "Testing Project"
             }
         }
+        stage('Static Code Analysis')
+        {
+            steps {
+                sh script: '''
+                ./gradlew sonarqube
+                ''',
+                label: "Running Sonarqube Scan"
+            }
+        }
         stage('Build DockerImage')
         {
             steps {
