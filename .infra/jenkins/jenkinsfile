@@ -7,21 +7,21 @@ pipeline {
      stages {
         stage('Build') {
             steps {
-               sh script: '''gradlew.bat clean build''',
+               sh script: '''gradlew build''',
                label: "Building Project"
             }
         }
         stage('Test')
         {
             steps {
-                sh script: '''gradlew.bat test''',
+                sh script: '''gradlew test''',
                 label: "Testing Project"
             }
         }
         stage('Static Code Analysis')
         {
             steps {
-                sh script: '''gradlew.bat sonarqube''',
+                sh script: '''gradlew sonarqube''',
                 label: "Running Sonarqube Scan"
             }
         }
