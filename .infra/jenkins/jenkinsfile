@@ -7,21 +7,28 @@ pipeline {
      stages {
         stage('Build') {
             steps {
-               sh script: '''gradlew build''',
+               sh script: '''
+               chmod 777 ./gradlew
+               ./gradlew build
+               ''',
                label: "Building Project"
             }
         }
         stage('Test')
         {
             steps {
-                sh script: '''gradlew test''',
+                sh script: '''
+                ./gradlew test
+                ''',
                 label: "Testing Project"
             }
         }
         stage('Static Code Analysis')
         {
             steps {
-                sh script: '''gradlew sonarqube''',
+                sh script: '''
+                ./gradlew sonarqube
+                ''',
                 label: "Running Sonarqube Scan"
             }
         }
