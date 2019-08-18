@@ -21,7 +21,7 @@ pipeline {
         stage('Static Code Analysis')
         {
             steps {
-                bat script: '''gradlew.bat clean sonarqube''',
+                bat script: '''gradlew.bat sonarqube''',
                 label: "Running Sonarqube Scan"
             }
         }
