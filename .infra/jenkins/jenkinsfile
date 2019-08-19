@@ -3,9 +3,8 @@ pipeline {
      stages {
         stage('Build') {
             steps {
-               sh script: '''
-               chmod 777 ./gradlew
-               ./gradlew build
+               bat script: '''
+               gradlew.bat build
                ''',
                label: "Building Project"
             }
@@ -13,8 +12,8 @@ pipeline {
         stage('Test')
         {
             steps {
-                sh script: '''
-                ./gradlew test
+                bat script: '''
+                gradlew.bat test
                 ''',
                 label: "Testing Project"
             }
@@ -22,8 +21,8 @@ pipeline {
         stage('Static Code Analysis')
         {
             steps {
-                sh script: '''
-                ./gradlew sonarqube
+                bat script: '''
+                gradlew.bat sonarqube
                 ''',
                 label: "Running Sonarqube Scan"
             }
@@ -31,7 +30,7 @@ pipeline {
         stage('Build DockerImage')
         {
             steps {
-            sh script: '''
+            bat script: '''
                 docker build . -t "my-new-rover"
                 docker run my-new-rover
                 ''',
@@ -41,7 +40,7 @@ pipeline {
         stage('Publish DockerImage')
         {
             steps {
-            sh script: '''
+            bat script: '''
                 docker login -u=anoop2677 -p=0@noopkum@r
                 docker tag my-new-rover anoop2677/my-rover:latest
                 docker push anoop2677/my-rover:latest
@@ -52,7 +51,7 @@ pipeline {
     }
     post{
         always{
-            sh script:'''
+            bat script:'''
             docker logout
             '''
             deleteDir()
