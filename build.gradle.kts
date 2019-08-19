@@ -1,9 +1,9 @@
 plugins {
     java
+    id("org.sonarqube") version "2.7.1"
 }
 
 group = "com.tavisca.workshops"
-version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -14,6 +14,13 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.0")
 }
+
+val jar by tasks.getting(Jar::class) {
+    manifest {
+        attributes["Main-Class"] = "com.tavisca.workshops.Marsrover.RunRover"
+    }
+}
+
 
 configure<JavaPluginConvention> {
     sourceCompatibility = JavaVersion.VERSION_1_8

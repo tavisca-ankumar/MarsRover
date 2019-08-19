@@ -1,0 +1,58 @@
+pipeline {
+    agent any
+    parameters{
+        string(name: 'DOCKER_USERNAME', description: "Enter username")
+        password(name: 'DOCKER_PASSWORD', description: "Enter password")
+    }
+     stages {
+        stage('Build') {
+            steps {
+               bat script: '''gradlew.bat clean build''',
+               label: "Building Project"
+            }
+        }
+        stage('Test')
+        {
+            steps {
+                bat script: '''gradlew.bat test''',
+                label: "Testing Project"
+            }
+        }
+        stage('Static Code Analysis')
+        {
+            steps {
+                bat script: '''gradlew.bat sonarqube''',
+                label: "Running SonarQube Scan"
+            }
+        }
+        stage('Build DockerImage')
+        {
+            steps {
+            bat script: '''
+                docker build . -t "my-new-rover"
+                docker run my-new-rover
+                ''',
+                label: "Building Docker Image"
+            }
+        }
+        stage('Publish DockerImage')
+        {
+            steps {
+            bat script: '''
+                docker login -u=%DOCKER_USERNAME% -p=%DOCKER_PASSWORD%
+                docker tag my-new-rover anoop2677/my-rover:latest
+                docker push anoop2677/my-rover:latest
+                ''',
+                label: "Publishing Docker Image"
+            }
+        }
+    }
+    post{
+        always{
+            bat script:'''
+            docker logout
+            '''
+            deleteDir()
+        }
+    }
+}
