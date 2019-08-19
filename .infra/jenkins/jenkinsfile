@@ -1,34 +1,21 @@
 pipeline {
     agent any
     parameters{
-        string(name: 'DOCkER_USERNAME', description:"Enter username")
-        password(name:'DOCKER_PASSWORD', description:"Enter password")
+        string(name: 'DOCKER_USERNAME', description: "Enter username")
+        password(name: 'DOCKER_PASSWORD', description: "Enter password")
     }
      stages {
         stage('Build') {
             steps {
-               bat script: '''
-               gradlew.bat build
-               ''',
+               bat script: '''gradlew.bat clean build''',
                label: "Building Project"
             }
         }
         stage('Test')
         {
             steps {
-                bat script: '''
-                gradlew.bat test
-                ''',
+                bat script: '''gradlew.bat test''',
                 label: "Testing Project"
-            }
-        }
-        stage('Static Code Analysis')
-        {
-            steps {
-                bat script: '''
-                gradlew.bat sonarqube
-                ''',
-                label: "Running Sonarqube Scan"
             }
         }
         stage('Build DockerImage')
