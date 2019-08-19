@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    parameters{
+        string(name: 'DOCkER_USERNAME', description:"Enter username")
+        password(name:'DOCKER_PASSWORD', description:"Enter password")
+    }
      stages {
         stage('Build') {
             steps {
@@ -41,7 +45,7 @@ pipeline {
         {
             steps {
             bat script: '''
-                docker login -u=anoop2677 -p=0@noopkum@r
+                docker login -u=%DOCKER_USERNAME% -p=%DOCKER_PASSWORD%
                 docker tag my-new-rover anoop2677/my-rover:latest
                 docker push anoop2677/my-rover:latest
                 ''',
